@@ -15,4 +15,4 @@ setup_copy_env:
 	fi
 
 setup_create_db:
-	$(call create_db,laravel)
+	$(call create_db,laravel_workflow_demo)

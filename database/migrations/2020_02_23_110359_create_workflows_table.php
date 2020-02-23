@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTransactionsTable extends Migration
+class CreateWorkflowsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateTransactionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('transactions', function (Blueprint $table) {
+        Schema::create('workflows', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->string('type')->nullable();
-            $table->json('data')->nullable();
+            $table->string('originator_type')->nullable();
+            $table->integer('originator_id')->nullable();
+            $table->integer('workflow_template_id')->nullable();
+            $table->string('state')->nullable();
 
             $table->timestamps();
         });
@@ -30,6 +32,6 @@ class CreateTransactionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transactions');
+        Schema::dropIfExists('workflows');
     }
 }
